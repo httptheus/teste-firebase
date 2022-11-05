@@ -56,58 +56,6 @@
         </div>
     </main>
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-
-        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.4.3/firebase-database.js";
-
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-        
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyAqGYdEykJTY0py1I_8shduISVWRdL6nlY",
-          authDomain: "teste-firebase-e20c5.firebaseapp.com",
-          databaseURL: "https://teste-firebase-e20c5-default-rtdb.firebaseio.com",
-          projectId: "teste-firebase-e20c5",
-          storageBucket: "teste-firebase-e20c5.appspot.com",
-          messagingSenderId: "617733693222",
-          appId: "1:617733693222:web:b293a3cc0b04dedea46be7"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        const auth = getAuth();
-
-        /**/
-
-        document.getElementById('btnCadastrar').addEventListener('click', (e) => {
-            var emailCad = document.getElementById('inputEmailCadastro').value
-            var senhaCad = document.getElementById('inputSenhaCadastro').value
-            var nomeDeUsuarioCad = document.getElementById('inputNomeDeUsuariCadastro').value
-
-            createUserWithEmailAndPassword(auth, emailCad, passwordCad)
-                .then((userCredential) => {
-                  // Signed in 
-                  const user = userCredential.user;
-
-                  alert("Usuário Cadastrado!")
-                  // ...
-                })
-                .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-
-                  alert("Erro ao cadastrar!")
-                  // ..
-                });
-        })
-    </script>
-
     <!---->
 
     <script src="js/formSwitch.js"></script>
