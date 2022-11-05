@@ -7,7 +7,7 @@
     <title>teste-firebase</title>
 </head>
 <body>
-    <main>
+    <main id="formCadastro">
         <h2>Cadastre-se</h2>
 
         <div>
@@ -27,6 +27,32 @@
 
         <div>
             <button id="btnCadastrar">Finalizar Cadastro</button>
+        </div>
+
+        <div>
+            <span>Já tem uma conta? <span id="linkFormLogin" class="linkForm">Inicie sua sessão</span></span>
+        </div>
+    </main>
+
+    <main id="formLogin">
+        <h2>Login</h2>
+
+        <div>
+            <label>E-mail</label>
+            <input type="email" id="inputEmail">
+        </div>
+
+        <div>
+            <label>Senha</label>
+            <input type="password" id="inputSenha">
+        </div>
+
+        <div>
+            <button id="btnCadastrar">Iniciar Sessão</button>
+        </div>
+
+        <div>
+            <span>Não possui acesso? <span id="linkFormCadastro" class="linkForm">Crie uma conta</span></span>
         </div>
     </main>
 
@@ -50,6 +76,9 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
     </script>
-    
+
+    <!---->
+
+    <script src="formSwitch.js"></script>
 </body>
 </html>
