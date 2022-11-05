@@ -1,0 +1,78 @@
+html{
+    height: 90%;
+}
+
+* { font-family: monospace; }
+
+::selection{
+    background-color: black;
+    color: white;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+
+    background-color: turquoise;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: auto;
+
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 6px black;
+}
+
+main input[type=text], input[type=email], input[type=password]{
+    width: 220px;
+    padding: 8px;
+
+    border: 2px solid black;
+    outline: none;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
+    border-color: deeppink;
+}
+
+main label{ font-weight: 900; }
+
+main div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin: 10px;
+}
+
+button{
+    cursor: pointer;
+
+    margin-top: 15px;
+    width: 90%;
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
+    color: white;
+    background-color: deeppink;
+    box-shadow: 0px 6px rgb(167, 14, 95);
+}
+
+button:active{
+    box-shadow: 0px 3px rgb(167, 14, 95);
+    transform: translateY(3px);
+}
