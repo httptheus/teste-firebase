@@ -48,7 +48,7 @@
         </div>
 
         <div>
-            <button id="btnCadastrar">Iniciar Sessão</button>
+            <button id="btnLogar">Iniciar Sessão</button>
         </div>
 
         <div>
@@ -58,7 +58,12 @@
 
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.4.3/firebase-database.js";
+
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+        
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -75,6 +80,32 @@
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        /**/
+
+        document.getElementById('btnCadastrar').addEventListener('click', (e) => {
+            var email = document.getElementById('inputEmail').value
+            var senha = document.getElementById('inputSenha').value
+            var nomeDeUsuario = document.getElementById('inputNomeDeUsuario').value
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                  // Signed in 
+                  const user = userCredential.user;
+
+                  alert("Usuário Cadastrado!")
+                  // ...
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+
+                  alert("Erro ao cadastrar!")
+                  // ..
+                });
+        })
     </script>
 
     <!---->
