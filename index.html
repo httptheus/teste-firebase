@@ -67,6 +67,9 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+
+        import { getFirestore, setDoc, addDoc, doc, collection } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -83,6 +86,7 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
         document.getElementById('btnCadastrar').addEventListener('click', function(){
 
@@ -108,6 +112,19 @@
                     setTimeout(() => {
                         spanAviso.style.display = 'none'
                     }, 5000)
+
+                    /**/
+                    //Adicionando dados no Firestore.
+
+                    let nomeDeUsuarioCad = document.getElementById('inputNomeDeUsuarioCadastro').value
+                    
+                    addDoc(collection(db, "Usuario"), {
+                        emailUsuario: `${emailCad}`,
+                        nomeDeUsuario: `${nomeDeUsuarioCad}`,
+                        senhaUsuario: `${senhaCad}`
+                    });
+
+                    alert("Adicionado no Banco de Dados!")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
