@@ -7,6 +7,7 @@
     <title>teste-firebase</title>
 </head>
 <body>
+    <span id="spanAviso"></span>
     <main id="formCadastro">
         <h2>Cadastre-se</h2>
 
@@ -85,6 +86,8 @@
 
         document.getElementById('btnCadastrar').addEventListener('click', function(){
 
+            let spanAviso = document.getElementById('spanAviso')
+
             let emailCad = document.getElementById('inputEmailCadastro').value
             let senhaCad = document.getElementById('inputSenhaCadastro').value
 
@@ -93,13 +96,33 @@
                     // Signed in 
                     const user = userCredential.user;
                     // ...
-                    alert("Conta criada com sucesso!")
+                    spanAviso.innerHTML = "Conta criada com sucesso!"
+                    spanAviso.style.backgroundColor = 'lime'
+                    spanAviso.style.display = 'block'
+
+                    setTimeout(() => {
+                        spanAviso.style.top = -200 + 'px'
+                    }, 5000);
+
+                    setTimeout(() => {
+                        spanAviso.style.display = 'none'
+                    }, 5000)
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     // ..
-                    alert("Erro ao criar conta!")
+                    spanAviso.innerHTML = "Erro ao criar conta. Tente novamente."
+                    spanAviso.style.backgroundColor = 'tomato'
+                    spanAviso.style.display = 'block'
+
+                    setTimeout(() => {
+                        spanAviso.style.top = -200 + 'px'
+                    }, 5000);
+
+                    setTimeout(() => {
+                        spanAviso.style.display = 'none'
+                    }, 5000)
                 });
         })
     </script>
