@@ -58,6 +58,50 @@
 
     <!---->
 
-    <script src="js/formSwitch.js"></script>
 </body>
+    <script src="js/formSwitch.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCf4cJSbY3YGZRhlTAiUSJ0edBKa8MeKG8",
+          authDomain: "teste-firebase-3e7cd.firebaseapp.com",
+          projectId: "teste-firebase-3e7cd",
+          storageBucket: "teste-firebase-3e7cd.appspot.com",
+          messagingSenderId: "445011702666",
+          appId: "1:445011702666:web:ea39e7dbca7d3e937e4e73"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('btnCadastrar').addEventListener('click', function(){
+
+            let emailCad = document.getElementById('inputEmailCadastro').value
+            let senhaCad = document.getElementById('inputSenhaCadastro').value
+
+            createUserWithEmailAndPassword(auth, emailCad, senhaCad)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    // ...
+                    alert("Conta criada com sucesso!")
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    alert("Erro ao criar conta!")
+                });
+        })
+    </script>
 </html>
+
